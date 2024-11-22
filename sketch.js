@@ -113,4 +113,24 @@ function setup() {
   }
 }
 
-function draw() {}
+function draw() {
+    const celdaDis = celdas.filter((celda) => {
+        return celda.colapsada == false;
+      });
+    
+      if (celdaDis.length > 0) {
+        celdaDis.sort((a, b) => {
+          return a.opciones.length - b.opciones.length;
+        });
+        const celdasXColapsar = celdaDis.filter((celda) => {
+          return celda.opciones.length == celdaDis[0].opciones.length;
+        });
+    
+        const celdaSelec = random(celdasXColapsar);
+        celdaSelec.colapsada = true;
+    
+        const opcionSelec = random(celdaSelec.opciones);
+        celdaSelec.opciones = [opcionSelec];
+    
+
+}
